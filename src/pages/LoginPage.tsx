@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
   return (
     <div className="mt-4 grow flex items-center justify-around">
       <div className="mb-64">
