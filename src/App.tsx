@@ -8,7 +8,7 @@ import RegisterPage from "./pages/RegisterPage";
 
 axios.defaults.baseURL = "http://localhost:4000";
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <>
       <Routes>

@@ -1,13 +1,13 @@
 import axios from "axios";
-import { useState } from "react";
+import { FormEvent, useState } from "react";
 import { Link } from "react-router-dom";
 
-const RegisterPage = () => {
-  const [name, setName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const RegisterPage: React.FC = () => {
+  const [name, setName] = useState<string>("");
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
-  const handleRegisterUser = async (e: { preventDefault: () => void }) => {
+  const handleRegisterUser = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     try {
       await axios.post("/register", {

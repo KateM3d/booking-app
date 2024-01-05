@@ -1,8 +1,8 @@
 import { Link } from "react-router-dom";
 
-const LoginPage = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+const LoginPage: React.FC = () => {
+  const [email, setEmail] = useState<string>("");
+  const [password, setPassword] = useState<string>("");
 
   return (
     <div className="mt-4 grow flex items-center justify-around">
