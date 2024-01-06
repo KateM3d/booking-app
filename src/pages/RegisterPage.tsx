@@ -1,11 +1,12 @@
 import axios from "axios";
 import { FormEvent, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 
 const RegisterPage: React.FC = () => {
   const [name, setName] = useState<string>("");
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
+  const [redirect, setRedirect] = useState<boolean>(false);
 
   const handleRegisterUser = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -15,11 +16,16 @@ const RegisterPage: React.FC = () => {
         email,
         password,
       });
+      setRedirect(true);
       alert("Registration successful. Now you can log in");
     } catch (e) {
       alert("Registration failed. Please try again later");
     }
   };
+
+  if (redirect) {
+    return <Navigate to={"/login"} />;
+  }
 
   return (
     <div className="mt-4 grow flex items-center justify-around">
