@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import Perks from "./Perks";
@@ -6,7 +7,7 @@ const PlacesPage = () => {
   const { action } = useParams();
   const [title, setTitle] = useState<string>("");
   const [address, setAddress] = useState<string>("");
-  const [addedPhotos, setAddedPhotos] = useState([]);
+  const [addedPhotos, setAddedPhotos] = useState<string[]>([]);
   const [photoLink, setPhotoLink] = useState<string>("");
   const [description, setDescription] = useState<string>("");
   const [perks, setPerks] = useState([]);
@@ -22,6 +23,19 @@ const PlacesPage = () => {
         <p className="text-gray-500 text-sm">{description}</p>
       </>
     );
+  };
+
+  const handleAddPhotoByLink = async (
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => {
+    e.preventDefault();
+    const { data: filename } = await axios.post("/upload-by-link", {
+      link: photoLink,
+    });
+    setAddedPhotos((prev) => {
+      return [...prev, filename];
+    });
+    setPhotoLink("");
   };
 
   return (
@@ -75,12 +89,25 @@ const PlacesPage = () => {
                 value={photoLink}
                 onChange={(e) => setPhotoLink(e.target.value)}
               />
-              <button className="bg-gray-200 px-4 rounded-2xl">
+              <button
+                className="bg-gray-200 px-4 rounded-2xl"
+                onClick={(e) => handleAddPhotoByLink(e)}
+              >
                 Add&nbsp;photo
               </button>
             </div>
-            <div className="mt-2 grid grid-cols-3 lg:grid-cols-6 md:grid-cols-4">
-              <button className="flex justify-center gap-1 border bg-transparent rounded-2xl p-8 text-2xl text-gray-600">
+            <div className="mt-2 grid gap-2 grid-cols-3 lg:grid-cols-6 md:grid-cols-4">
+              {addedPhotos.length > 0 &&
+                addedPhotos.map((el) => (
+                  <div>
+                    <img
+                      src={"http://localhost:4000/uploads/" + el}
+                      alt="image"
+                      className="rounded-2xl"
+                    />
+                  </div>
+                ))}
+              <button className="flex items-center justify-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
