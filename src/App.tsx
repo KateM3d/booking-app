@@ -19,6 +19,7 @@ const App: React.FC = () => {
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/account/:subpage?" element={<AccountPge />} />
+          <Route path="/account/:subpage/:action" element={<AccountPge />} />
         </Route>
       </Routes>
     </UserContextProvider>
