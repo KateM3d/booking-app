@@ -1,14 +1,26 @@
 import React from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const Perks = ({ selected, onChange }) => {
+interface PerksProps {
+  selected: string[];
+  onChange: React.Dispatch<React.SetStateAction<string[]>>;
+}
+
+const Perks: React.FC<PerksProps> = ({ selected, onChange }) => {
+  const handleCheckboxClick = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { checked, name } = e.target;
+    if (checked) {
+      onChange([...selected, name]);
+    } else {
+      onChange([...selected.filter((selectedName) => selectedName !== name)]);
+    }
+  };
+
   return (
     <>
-      {" "}
       <div className="grid gap-2 mt-2 grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
           {" "}
-          <input type="checkbox" />
+          <input type="checkbox" name="wifi" onChange={handleCheckboxClick} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -27,7 +39,7 @@ const Perks = ({ selected, onChange }) => {
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
           {" "}
-          <input type="checkbox" />
+          <input type="checkbox" name="pets" onChange={handleCheckboxClick} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -46,7 +58,11 @@ const Perks = ({ selected, onChange }) => {
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
           {" "}
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            name="parking"
+            onChange={handleCheckboxClick}
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -65,7 +81,7 @@ const Perks = ({ selected, onChange }) => {
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
           {" "}
-          <input type="checkbox" />
+          <input type="checkbox" name="tv" onChange={handleCheckboxClick} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -83,7 +99,7 @@ const Perks = ({ selected, onChange }) => {
           <span>TV</span>
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-          <input type="checkbox" />
+          <input type="checkbox" name="washer" onChange={handleCheckboxClick} />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -98,10 +114,14 @@ const Perks = ({ selected, onChange }) => {
               d="M7.5 7.5h-.75A2.25 2.25 0 0 0 4.5 9.75v7.5a2.25 2.25 0 0 0 2.25 2.25h7.5a2.25 2.25 0 0 0 2.25-2.25v-7.5a2.25 2.25 0 0 0-2.25-2.25h-.75m-6 3.75 3 3m0 0 3-3m-3 3V1.5m6 9h.75a2.25 2.25 0 0 1 2.25 2.25v7.5a2.25 2.25 0 0 1-2.25 2.25h-7.5a2.25 2.25 0 0 1-2.25-2.25v-.75"
             />
           </svg>
-          <span>Washer</span>
+          <span>washer</span>
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-          <input type="checkbox" />
+          <input
+            type="checkbox"
+            name="bathroom"
+            onChange={handleCheckboxClick}
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -117,7 +137,7 @@ const Perks = ({ selected, onChange }) => {
             />
           </svg>
 
-          <span>Private bathroom</span>
+          <span>private bathroom</span>
         </label>
       </div>
     </>
