@@ -66,7 +66,6 @@ const PlacesPage = () => {
             <h2 className="text-2xl mt-4">Description</h2>
             <p className="text-gray-500 text-sm">Add short description</p>
             <textarea />
-
             <h2 className="text-2xl mt-4">Perks</h2>
             <p className="text-gray-500 text-sm">
               Select all the perks of your place
@@ -186,6 +185,30 @@ const PlacesPage = () => {
                 <span>Private bathroom</span>
               </label>
             </div>
+            <h2 className="text-2xl mt-4">Extra Info</h2>
+            <p className="text-gray-500 text-sm">Any info you want to add</p>
+            <textarea />
+            <h2 className="text-2xl mt-4">Check in and Check out times</h2>
+            <p className="text-gray-500 text-sm">
+              add check in and out times, remember to have some time window for
+              cleaning the room between guests
+            </p>
+            <div className="grid gap-2 sm:grid-cols-3">
+              <div>
+                <h3 className="mt-2 -mb-1">Check in time:</h3>
+                <input type="text" placeholder="12:00" />
+              </div>
+              <div>
+                <h3 className="mt-2 -mb-1">Check out time:</h3>
+                <input type="text" placeholder="12:00" />
+              </div>{" "}
+              <div>
+                <h3 className="mt-2 -mb-1">Max guests:</h3>
+                <input type="text" />
+              </div>
+            </div>
+
+            <button className="primary my-4">Save</button>
           </form>
         </div>
       )}
