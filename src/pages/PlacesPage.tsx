@@ -38,6 +38,26 @@ const PlacesPage = () => {
     setPhotoLink("");
   };
 
+  const handleUploadPhoto = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const files = e.target.files;
+    const data = new FormData();
+    if (files !== null) {
+      for (let i = 0; i < files.length; i++) {
+        data.append("photos", files[i]);
+      }
+      axios
+        .post("/upload", data, {
+          headers: { "Content-type": "multipart/form-data" },
+        })
+        .then((response) => {
+          const { data: filenames } = response;
+          setAddedPhotos((prev) => {
+            return [...prev, ...filenames];
+          });
+        });
+    }
+  };
+
   return (
     <div>
       {action !== "new" && (
@@ -98,8 +118,8 @@ const PlacesPage = () => {
             </div>
             <div className="mt-2 grid gap-2 grid-cols-3 lg:grid-cols-6 md:grid-cols-4">
               {addedPhotos.length > 0 &&
-                addedPhotos.map((el) => (
-                  <div>
+                addedPhotos.map((el, index) => (
+                  <div key={index}>
                     <img
                       src={"http://localhost:4000/uploads/" + el}
                       alt="image"
@@ -107,7 +127,13 @@ const PlacesPage = () => {
                     />
                   </div>
                 ))}
-              <button className="flex items-center justify-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
+              <label className="cursor-pointer flex items-center justify-center gap-1 border bg-transparent rounded-2xl p-2 text-2xl text-gray-600">
+                <input
+                  type="file"
+                  multiple
+                  className="hidden"
+                  onChange={handleUploadPhoto}
+                />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
@@ -123,7 +149,7 @@ const PlacesPage = () => {
                   />
                 </svg>
                 Upload
-              </button>
+              </label>
             </div>
             {handleInputForm("Description", "Add short description")}
             <textarea
