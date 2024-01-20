@@ -3,9 +3,11 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Layout from "./Layout";
 import { UserContextProvider } from "./UserContext";
-import AccountPge from "./pages/AccountPage";
+import AccountPage from "./pages/AccountPage";
 import IndexPage from "./pages/IndexPage";
 import LoginPage from "./pages/LoginPage";
+import PlacesFormPage from "./pages/PlacesFormPage";
+import PlacesPage from "./pages/PlacesPage";
 import RegisterPage from "./pages/RegisterPage";
 
 axios.defaults.baseURL = "http://localhost:4000";
@@ -18,8 +20,10 @@ const App: React.FC = () => {
           <Route index element={<IndexPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
-          <Route path="/account/:subpage?" element={<AccountPge />} />
-          <Route path="/account/:subpage/:action" element={<AccountPge />} />
+          <Route path="/account" element={<AccountPage />} />
+          <Route path="/account/places" element={<PlacesPage />} />
+          <Route path="/account/places/new" element={<PlacesFormPage />} />
+          <Route path="/account/places/:id" element={<PlacesFormPage />} />
         </Route>
       </Routes>
     </UserContextProvider>

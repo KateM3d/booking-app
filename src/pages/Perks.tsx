@@ -20,7 +20,12 @@ const Perks: React.FC<PerksProps> = ({ selected, onChange }) => {
       <div className="grid gap-2 mt-2 grid-cols-2 md:grid-cols-4 lg:grid-cols-6">
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
           {" "}
-          <input type="checkbox" name="wifi" onChange={handleCheckboxClick} />
+          <input
+            type="checkbox"
+            checked={selected.includes("wifi")}
+            name="wifi"
+            onChange={handleCheckboxClick}
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -39,7 +44,12 @@ const Perks: React.FC<PerksProps> = ({ selected, onChange }) => {
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
           {" "}
-          <input type="checkbox" name="pets" onChange={handleCheckboxClick} />
+          <input
+            type="checkbox"
+            checked={selected.includes("pets")}
+            name="pets"
+            onChange={handleCheckboxClick}
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -60,6 +70,7 @@ const Perks: React.FC<PerksProps> = ({ selected, onChange }) => {
           {" "}
           <input
             type="checkbox"
+            checked={selected.includes("parking")}
             name="parking"
             onChange={handleCheckboxClick}
           />
@@ -81,7 +92,12 @@ const Perks: React.FC<PerksProps> = ({ selected, onChange }) => {
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
           {" "}
-          <input type="checkbox" name="tv" onChange={handleCheckboxClick} />
+          <input
+            type="checkbox"
+            checked={selected.includes("tv")}
+            name="tv"
+            onChange={handleCheckboxClick}
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -99,7 +115,12 @@ const Perks: React.FC<PerksProps> = ({ selected, onChange }) => {
           <span>TV</span>
         </label>
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
-          <input type="checkbox" name="washer" onChange={handleCheckboxClick} />
+          <input
+            type="checkbox"
+            checked={selected.includes("washer")}
+            name="washer"
+            onChange={handleCheckboxClick}
+          />
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -119,6 +140,7 @@ const Perks: React.FC<PerksProps> = ({ selected, onChange }) => {
         <label className="border p-4 flex rounded-2xl gap-2 items-center cursor-pointer">
           <input
             type="checkbox"
+            checked={selected.includes("bathroom")}
             name="bathroom"
             onChange={handleCheckboxClick}
           />
