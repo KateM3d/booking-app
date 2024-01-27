@@ -46,7 +46,7 @@ const PhotoUploader: React.FC<PhotoUploaderProps> = ({
   };
 
   const handleRemovePhoto = (
-    e: React.MouseEvent<HTMLDivElement>,
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     link: string
   ) => {
     e.preventDefault();
@@ -54,7 +54,7 @@ const PhotoUploader: React.FC<PhotoUploaderProps> = ({
   };
 
   const handleSelectMain = (
-    e: React.MouseEvent<HTMLDivElement>,
+    e: React.MouseEvent<HTMLButtonElement, MouseEvent>,
     link: string
   ) => {
     e.preventDefault();

@@ -18,7 +18,7 @@ interface Place {
 const PlacesPage = () => {
   const [places, setPlaces] = useState<Place[]>([]);
   useEffect(() => {
-    axios.get("/places", { withCredentials: true }).then(({ data }) => {
+    axios.get("/user-places", { withCredentials: true }).then(({ data }) => {
       setPlaces(data);
       console.log(places);
     });
