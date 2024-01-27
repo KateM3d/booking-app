@@ -23,7 +23,7 @@ const Header: React.FC = () => {
               d="M6 12 3.269 3.125A59.769 59.769 0 0 1 21.485 12 59.768 59.768 0 0 1 3.27 20.875L5.999 12Zm0 0h7.5"
             />
           </svg>
-          <span className="font-bold text-xl">airbnd</span>
+          <span className="font-bold text-xl">BookMeFirst</span>
         </Link>
 
         <div className="flex gap-2 border border-gray-300 rounded-full py-2 px-4 shadow-md shadow-gray-300">
