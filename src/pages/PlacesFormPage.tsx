@@ -58,8 +58,18 @@ const PlacesFormPage = () => {
       checkout,
       maxGuests,
     };
-    await axios.post("/places", placeData, { withCredentials: true });
-    setRedirect(true);
+
+    if (id) {
+      await axios.put(
+        "/places",
+        { id, ...placeData },
+        { withCredentials: true }
+      );
+      setRedirect(true);
+    } else {
+      await axios.post("/places", placeData, { withCredentials: true });
+      setRedirect(true);
+    }
   };
 
   if (redirect) {
