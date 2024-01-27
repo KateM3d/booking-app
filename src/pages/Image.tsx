@@ -2,6 +2,9 @@ import React from "react";
 
 interface ImageProps {
   src: string;
+  onClick?: () => void;
+  className?: string;
+  alt?: string;
 }
 
 const Image: React.FC<ImageProps> = ({ src }) => {
