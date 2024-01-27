@@ -1,8 +1,9 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import AddressLink from "./AddressLink";
-import PlaceGallery from "./PlaceGalery";
+import AddressLink from "./AddressLink.tsx";
+import Booking from "./Booking.tsx";
+import PlaceGallery from "./PlaceGalery.tsx";
 
 interface PlaceData {
   _id: string;
@@ -52,6 +53,9 @@ const Place: React.FC = () => {
           <br />
           Max number of guests: {place.maxGuests}
         </div>
+      </div>
+      <div>
+        <Booking place={place} />
       </div>
       <div className="bg-white -mx-8 px-8 py-8 border-t">
         <div>
