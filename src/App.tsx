@@ -6,6 +6,7 @@ import { UserContextProvider } from "./UserContext";
 import AccountPage from "./pages/AccountPage";
 import IndexPage from "./pages/IndexPage";
 import LoginPage from "./pages/LoginPage";
+import Place from "./pages/Place";
 import PlacesFormPage from "./pages/PlacesFormPage";
 import PlacesPage from "./pages/PlacesPage";
 import RegisterPage from "./pages/RegisterPage";
@@ -24,6 +25,7 @@ const App: React.FC = () => {
           <Route path="/account/places" element={<PlacesPage />} />
           <Route path="/account/places/new" element={<PlacesFormPage />} />
           <Route path="/account/places/:id" element={<PlacesFormPage />} />
+          <Route path="/place/:id" element={<Place />} />
         </Route>
       </Routes>
     </UserContextProvider>
