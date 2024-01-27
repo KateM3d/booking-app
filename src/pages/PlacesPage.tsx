@@ -13,6 +13,7 @@ interface Place {
   perks: string[];
   extraInfo: string;
   maxGuests: number;
+  price: number;
 }
 
 const PlacesPage = () => {
@@ -67,6 +68,7 @@ const PlacesPage = () => {
               <div className="grow-0 shrink">
                 <h2 className="text-xl">{place.title}</h2>
                 <p className="text-sm mt-2">{place.description}</p>
+                <h3 className="text-2xl">${place.price}</h3>
               </div>
             </Link>
           ))}
